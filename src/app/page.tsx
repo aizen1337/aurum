@@ -1,7 +1,7 @@
 import { SignUp, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '~/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogTrigger } from '~/components/ui/dialog';
 export default async function HomePage() {
     const navigation = [
       { name: 'Product', href: '#' },
