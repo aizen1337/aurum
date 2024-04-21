@@ -1,12 +1,14 @@
+import { SignUp, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
-export default function HomePage() {
+import { Button } from '~/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '~/components/ui/dialog';
+export default async function HomePage() {
     const navigation = [
       { name: 'Product', href: '#' },
       { name: 'Features', href: '#' },
       { name: 'Marketplace', href: '#' },
       { name: 'Company', href: '#' },
     ]
-    
       return (
         <div className="bg-zinc-900 h-screen">
           <header className="absolute inset-x-0 top-0 z-50">
@@ -17,12 +19,9 @@ export default function HomePage() {
                 </a>
               </div>
               <div className="flex lg:hidden">
-                <button
-                  type="button"
-                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-100"
-                >
+                <Button>
                   <span className="sr-only">Open main menu</span>
-                </button>
+                </Button>
               </div>
               <div className="hidden lg:flex lg:gap-x-12">
                 {navigation.map((item) => (
@@ -32,9 +31,21 @@ export default function HomePage() {
                 ))}
               </div>
               <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="#" className="text-sm font-semibold leading-6 text-gray-100">
-                  Log in <span aria-hidden="true">&rarr;</span>
-                </a>
+                <SignedOut>
+                <Dialog>
+                  <DialogTrigger>
+                    <Button>Sign In</Button>
+                  </DialogTrigger>
+                  <DialogContent className='grid place-items-center'>
+                      <DialogDescription>
+                      <SignUp routing="hash"/>
+                      </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton/>
+                </SignedIn>
               </div>
             </nav>
 
@@ -71,12 +82,9 @@ export default function HomePage() {
                 Feel free to explore our finance solutions, tailor made just for you.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <Link
-                    href="#"
-                    className="rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
-                  >
+                  <Button>
                     Get started
-                  </Link>
+                  </Button>
                   <Link href="#" className="text-sm font-semibold leading-6 text-gray-100">
                     Learn more <span aria-hidden="true">→</span>
                   </Link>
