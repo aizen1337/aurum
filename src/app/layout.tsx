@@ -2,6 +2,8 @@ import "~/styles/globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 
 import { Inter } from "next/font/google";
+import { dark } from "@clerk/themes";
+import { ThemeProvider } from "~/components/providers/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,10 +22,24 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-    <html lang="en">
+
+    <ClerkProvider
+    appearance={{
+      baseTheme: dark
+    }
+    }
+    >
+    <html lang="en" suppressContentEditableWarning suppressHydrationWarning>
+      <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+      >
       <body className={`font-sans ${inter.variable}`}>{children}</body>
+      </ThemeProvider>
     </html>
     </ClerkProvider>
+
   );
 }

@@ -1,5 +1,6 @@
 import { SignUp, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
+import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 import { Button } from '~/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTrigger } from '~/components/ui/dialog';
 export default async function HomePage() {
@@ -15,26 +16,27 @@ export default async function HomePage() {
             <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
               <div className="flex lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">Aurum Bank</span>
                 </a>
               </div>
               <div className="flex lg:hidden">
-                <Button>
+                <Button variant={'primary'}>
                   <span className="sr-only">Open main menu</span>
                 </Button>
               </div>
               <div className="hidden lg:flex lg:gap-x-12">
                 {navigation.map((item) => (
-                  <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-100">
+                  <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-zinc-100">
                     {item.name}
                   </a>
                 ))}
               </div>
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <div className="flex flex-1 justify-center gap-2">
+                <ThemeSwitcher/>
                 <SignedOut>
                 <Dialog>
                   <DialogTrigger>
-                    <Button>Sign In</Button>
+                    <Button variant={'primary'}>Sign In</Button>
                   </DialogTrigger>
                   <DialogContent className='grid place-items-center'>
                       <DialogDescription>
@@ -66,7 +68,7 @@ export default async function HomePage() {
             </div>
             <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
               <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-gray-100/10 hover:ring-gray-100/20">
+                <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-zinc-100 ring-1 ring-zinc-100/10 hover:ring-zinc-100/20">
                   Announcing our next round of funding.{' '}
                   <a href="#" className="font-semibold text-amber-600">
                     <span className="absolute inset-0" aria-hidden="true" />
@@ -75,17 +77,17 @@ export default async function HomePage() {
                 </div>
               </div>
               <div className="text-center">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">
+                <h1 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-6xl">
                   Modern banking for you.
                 </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-100">
+                <p className="mt-6 text-lg leading-8 text-zinc-100">
                 Feel free to explore our finance solutions, tailor made just for you.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <Button>
+                  <Button variant={'primary'}>
                     Get started
                   </Button>
-                  <Link href="#" className="text-sm font-semibold leading-6 text-gray-100">
+                  <Link href="#" className="text-sm font-semibold leading-6 text-zinc-100">
                     Learn more <span aria-hidden="true">→</span>
                   </Link>
                 </div>
