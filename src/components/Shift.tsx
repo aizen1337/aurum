@@ -15,10 +15,10 @@ type ShiftWidgetProps = {
 export async function Shift({shift}: ShiftWidgetProps) {
     return (
         <div className="bg-zinc-100 dark:bg-zinc-700 rounded-lg p-4">
-        <h3 className="text-md font-bold mb-2 dark:text-white">{shift.title}</h3>
+        <h3 className="text-md font-bold mb-2 dark:text-white text-zinc-800">{shift.title}</h3>
         <div className="flex items-center gap-2">
-          <ClockIcon className="h-4 w-4 text-zinc-500 dark:text-zinc-400" />
-          <span className="text-zinc-500 dark:text-zinc-400">{shift?.startHour?.toLocaleTimeString('pl-PL')} - {shift?.endHour?.toLocaleTimeString('pl-PL')}</span>
+          <ClockIcon className="h-4 w-4 text-zinc-800 dark:text-zinc-400" />
+          <span className="text-zinc-800 dark:text-zinc-400">{shift?.startHour?.toLocaleTimeString('pl-PL')} - {shift?.endHour?.toLocaleTimeString('pl-PL')}</span>
         </div>
         <div className="flex items-center gap-2 mt-2">
           <Avatar>
@@ -27,7 +27,7 @@ export async function Shift({shift}: ShiftWidgetProps) {
           </Avatar>
           <div>
             <div className="font-medium dark:text-white">{shift.assignee}</div>
-            <div className="text-zinc-500 dark:text-zinc-400 text-sm">Team Lead</div>
+            <div className="text-zinc-800 dark:text-zinc-400 text-sm">Team Lead</div>
           </div>
         </div>
       </div>
