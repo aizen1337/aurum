@@ -1,6 +1,6 @@
 export default async function Hours() {
     return (
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4 h-full justify-evenly">
             {hourList.map((hour, index) => <Hour hour={hour} key={index}/>)} 
         </section>
     )

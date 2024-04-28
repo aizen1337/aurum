@@ -1,3 +1,4 @@
+import Header from "~/components/Header";
 
 export const metadata = {
   title: "Dashboard",
@@ -10,5 +11,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children
+  return (
+  <>
+  <Header/>
+  {children}
+  </>
+  )
 }
