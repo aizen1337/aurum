@@ -1,8 +1,8 @@
-import { SignUp, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs';
 import Link from 'next/link';
+import RedirectToDashboardButton from '~/components/RedirectToDashboardButton';
 import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 import { Button } from '~/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogTrigger } from '~/components/ui/dialog';
 export default async function HomePage() {
     const navigation = [
       { name: 'Product', href: '#' },
@@ -33,20 +33,13 @@ export default async function HomePage() {
               </div>
               <div className="flex flex-1 justify-center gap-2">
                 <ThemeSwitcher/>
-                <SignedOut>
-                <Dialog>
-                  <DialogTrigger>
-                    <Button variant={'primary'}>Sign In</Button>
-                  </DialogTrigger>
-                  <DialogContent className='grid place-items-center'>
-                      <DialogDescription>
-                      <SignUp routing="hash"/>
-                      </DialogDescription>
-                  </DialogContent>
-                </Dialog>
+                  <SignedOut>
+                  <SignInButton mode='modal' forceRedirectUrl={'/dashboard'}>
+                  <Button variant={'primary'}>Sign In </Button>
+                  </SignInButton>
                 </SignedOut>
                 <SignedIn>
-                  <UserButton/>
+                <RedirectToDashboardButton/>
                 </SignedIn>
               </div>
             </nav>
