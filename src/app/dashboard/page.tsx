@@ -1,3 +1,4 @@
+import { currentUser } from "@clerk/nextjs/server";
 import Hours from "~/components/Hours";
 import { Shift } from "~/components/Shift";
 // Function to generate a random ID
@@ -46,6 +47,14 @@ export default async function HomePage() {
           <h2 className="text-lg font-bold mb-4 dark:text-white text-zinc-900">Shift Schedule</h2>
           <div className="flex-1 grid grid-cols-[auto_1fr] gap-4 overflow-auto">
             <Hours/>
+            <div className="flex flex-col gap-4">
+                  {shifts.map((shift) => <Shift key={shift.id} shift={shift}/>)}
+            </div>
+          </div>
+        </div>
+        <div className="hidden lg:flex bg-white dark:bg-zinc-800 rounded-lg shadow-md p-4 flex flex-col h-full">
+          <h2 className="text-lg font-bold mb-4 dark:text-white text-zinc-900">Team members</h2>
+          <div className="flex-1 grid grid-cols-[auto_1fr] gap-4 overflow-auto">
             <div className="flex flex-col gap-4">
                   {shifts.map((shift) => <Shift key={shift.id} shift={shift}/>)}
             </div>

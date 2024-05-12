@@ -21,7 +21,6 @@ import { useState } from "react"
 
 export function DatePickerWithPresets() {
   const [date, setDate] = useState<Date>()
-
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -53,7 +52,7 @@ export function DatePickerWithPresets() {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          <Calendar mode="single" selected={date} onSelect={setDate} defaultMonth={new Date()}/>
         </div>
       </PopoverContent>
     </Popover>

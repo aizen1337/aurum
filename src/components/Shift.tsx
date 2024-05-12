@@ -23,10 +23,10 @@ export async function Shift({shift}: ShiftWidgetProps) {
         <div className="flex items-center gap-2 mt-2">
           <Avatar>
             <AvatarImage alt="John Doe" src="/placeholder-avatar.jpg" />
-            <AvatarFallback>US</AvatarFallback>
+            <AvatarFallback className="dark:text-white text-zinc-900 bg-zinc-300 dark:bg-zinc-900">US</AvatarFallback>
           </Avatar>
           <div>
-            <div className="font-medium dark:text-white">{shift.assignee}</div>
+            <div className="font-medium dark:text-white text-zinc-900">{shift.assignee}</div>
             <div className="text-zinc-800 dark:text-zinc-400 text-sm">Team Lead</div>
           </div>
         </div>

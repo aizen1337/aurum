@@ -30,14 +30,16 @@ export default async function RootLayout({
     }
     >
     <html lang="en" suppressContentEditableWarning suppressHydrationWarning>
+      <body className={`font-sans ${inter.variable}`}>
       <ThemeProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
-      >
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      >{children}
       </ThemeProvider>
+      </body>
+
     </html>
     </ClerkProvider>
 
