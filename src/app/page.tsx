@@ -4,7 +4,7 @@ import Link from 'next/link';
 import RedirectToDashboardButton from '~/components/RedirectToDashboardButton';
 import { ThemeSwitcher } from '~/components/ThemeSwitcher';
 import { Button } from '~/components/ui/button';
-import { SheetDescription, SheetTrigger, Sheet, SheetContent } from '~/components/ui/sheet';
+import {SheetTrigger, Sheet, SheetContent } from '~/components/ui/sheet';
 export default async function HomePage() {
     const navigation = [
       { name: 'Product', href: '#' },

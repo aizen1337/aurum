@@ -1,6 +1,9 @@
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import DashboardTable from "~/components/DashboardTable";
 import Hours from "~/components/Hours";
 import { Shift } from "~/components/Shift";
+import { getOrgMembers } from "~/server/clerkQueries";
+import { getShiftsByDay } from "~/server/shiftQueries";
 // Function to generate a random ID
 function generateID() {
   return Math.random().toString(36).substr(2, 10); // Random alphanumeric string
@@ -39,27 +42,13 @@ async function passShifts() {
   return shifts
 }
 export default async function HomePage() {
-  const shifts = await passShifts()
+  const {orgId} = auth()
+  const shifts = await getShiftsByDay(orgId!, new Date())
+  const teamMembers = await getOrgMembers(orgId!)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-950 text-white">
+    <main className="flex h-screen flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-950 text-white">
        <div className="w-full grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 p-6 dark:bg-zinc-950">
-        <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-4 flex flex-col h-full">
-          <h2 className="text-lg font-bold mb-4 dark:text-white text-zinc-900">Shift Schedule</h2>
-          <div className="flex-1 grid grid-cols-[auto_1fr] gap-4 overflow-auto">
-            <Hours/>
-            <div className="flex flex-col gap-4">
-                  {shifts.map((shift) => <Shift key={shift.id} shift={shift}/>)}
-            </div>
-          </div>
-        </div>
-        <div className="hidden lg:flex bg-white dark:bg-zinc-800 rounded-lg shadow-md p-4 flex flex-col h-full">
-          <h2 className="text-lg font-bold mb-4 dark:text-white text-zinc-900">Team members</h2>
-          <div className="flex-1 grid grid-cols-[auto_1fr] gap-4 overflow-auto">
-            <div className="flex flex-col gap-4">
-                  {shifts.map((shift) => <Shift key={shift.id} shift={shift}/>)}
-            </div>
-          </div>
-        </div>
+        <DashboardTable shifts={shifts} teamMembers={teamMembers}/>
       </div>
     </main>
   );

@@ -3,9 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import 'server-only'
 import { db } from './db'
-import { type ShiftType } from '@prisma/client'
+import { Shift, type ShiftType } from '@prisma/client'
 
-interface ShiftWithShiftType {
+export interface ShiftWithShiftType {
     id: string;
     createdAt: Date;
     updatedAt: Date;
@@ -30,4 +30,14 @@ export async function getShiftsByDay(orgId: string, day: Date): Promise<ShiftWit
         }
     }) 
     return shifts as ShiftWithShiftType[]
+}
+export async function createShiftType(shiftType: ShiftType) {
+    return await db.shiftType.create({
+        data: shiftType
+    })
+}
+export async function createShift(shift: Shift) {
+    return await db.shift.create({
+        data: shift
+    })
 }

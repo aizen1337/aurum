@@ -2,7 +2,7 @@ import Header from "~/components/Header";
 
 export const metadata = {
   title: "Dashboard",
-  description: "Banking app dashboard",
+  description: "Organize your team",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
